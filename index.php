@@ -1,7 +1,7 @@
 <?php
 // ============================================
 // PORTFOLIO COMPLETO - NATANAEL LUCAS
-// Com certificados reais e visualização de PDF
+// Com imagens locais e certificados
 // ============================================
 
 session_start();
@@ -28,37 +28,37 @@ $skills = [
         'title' => 'Frontend Básico',
         'icon' => 'fa-code',
         'items' => [
-            ['name' => 'HTML5', 'level' => 77],  // 85 - 10% = 76.5 -> 77
-            ['name' => 'CSS3', 'level' => 72],   // 80 - 10% = 72
-            ['name' => 'JavaScript', 'level' => 63] // 70 - 10% = 63
+            ['name' => 'HTML5', 'level' => 77],
+            ['name' => 'CSS3', 'level' => 72],
+            ['name' => 'JavaScript', 'level' => 63]
         ]
     ],
     'backend' => [
         'title' => 'Backend & Dados',
         'icon' => 'fa-database',
         'items' => [
-            ['name' => 'Lógica de Programação', 'level' => 63], // 70 - 10% = 63
-            ['name' => 'MySQL', 'level' => 50],  // 55 - 10% = 49.5 -> 50
-            ['name' => 'Python Básico', 'level' => 68] // 75 - 10% = 67.5 -> 68
+            ['name' => 'Lógica de Programação', 'level' => 63],
+            ['name' => 'MySQL', 'level' => 50],
+            ['name' => 'Python Básico', 'level' => 68]
         ]
     ],
     'tools' => [
         'title' => 'Ferramentas',
         'icon' => 'fa-tools',
         'items' => [
-            ['name' => 'Git & GitHub', 'level' => 63], // 70 - 10% = 63
-            ['name' => 'VS Code', 'level' => 77],  // 85 - 10% = 76.5 -> 77
-            ['name' => 'Figma Básico', 'level' => 45] // 50 - 10% = 45
+            ['name' => 'Git & GitHub', 'level' => 63],
+            ['name' => 'VS Code', 'level' => 77],
+            ['name' => 'Figma Básico', 'level' => 45]
         ]
     ]
 ];
 
-// Projetos
+// Projetos com imagens locais
 $projects = [
     [
         'title' => 'Realm Ascension - RPG de batalha medieval',
         'description' => 'Jogo RPG de texto em JavaScript com sistema de combate por turnos, escolha de personagens, sistema de inventário e progressão de níveis. Ambientado em um mundo medieval fantástico.',
-        'icon' => 'fa-dragon',
+        'image' => 'icon-512.png',
         'tech' => ['JavaScript', 'HTML5', 'CSS3'],
         'github' => 'https://github.com/Nat46g/RPG-Realm-Ascension',
         'demo' => 'https://realm-ascension.netlify.app'
@@ -66,7 +66,7 @@ $projects = [
     [
         'title' => 'ChatBot Inteligente - DN-Studios',
         'description' => 'ChatBot desenvolvido em JavaScript com interface web que responde perguntas sobre programação. Usa processamento de linguagem natural básico e possui banco de dados de comandos.',
-        'icon' => 'fa-robot',
+        'image' => 'chat-bot.png',
         'tech' => ['JavaScript', 'HTML5', 'CSS3', 'Responsivo'],
         'github' => 'https://github.com/Nat46g/CHAT-BOT_DN-STUDIOS',
         'demo' => 'https://chatbotdn.netlify.app'
@@ -74,7 +74,7 @@ $projects = [
     [
         'title' => 'AutoPremium - Site de Venda de Carros',
         'description' => 'Plataforma completa para compra e venda de veículos com sistema de cadastro de usuários, filtros avançados, galeria de imagens e sistema de favoritos.',
-        'icon' => 'fa-car',
+        'image' => 'autopremium.png',
         'tech' => ['HTML5', 'CSS3', 'JavaScript', 'Responsivo'],
         'github' => 'https://github.com/Nat46g/AUTOPREMIUM',
         'demo' => 'https://autopremiun.netlify.app'
@@ -333,21 +333,20 @@ $courses = [
         /* Sobre */
         .about-content { display: grid; grid-template-columns: 1fr 2fr; gap: 50px; align-items: center; }
         .profile-img {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             border-radius: 20px;
             overflow: hidden;
             box-shadow: var(--shadow);
-            min-height: 350px;
+            background: #f0f0f0;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            color: white;
-            padding: 30px;
         }
-        .profile-content i { font-size: 80px; margin-bottom: 20px; }
-        .profile-content h3 { color: white; margin-bottom: 10px; }
-        .profile-content p { color: rgba(255,255,255,0.9); margin-bottom: 5px; }
+        .profile-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
         .tech-stack {
             display: flex;
             justify-content: center;
@@ -359,7 +358,7 @@ $courses = [
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(255,255,255,0.2);
+            background: rgba(0,0,0,0.1);
             padding: 8px 16px;
             border-radius: 25px;
             font-size: 0.9rem;
@@ -460,10 +459,7 @@ $courses = [
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            transition: var(--transition);
         }
-        .certificate-img:hover { opacity: 0.9; }
         .pdf-placeholder {
             text-align: center;
             color: white;
@@ -505,12 +501,21 @@ $courses = [
         .project-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-hover); }
         .project-img {
             height: 200px;
+            overflow: hidden;
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 4rem;
+        }
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: white;
+            transition: var(--transition);
+        }
+        .project-card:hover .project-img img {
+            transform: scale(1.05);
         }
         .project-body { padding: 25px; }
         .project-tech { display: flex; flex-wrap: wrap; gap: 8px; margin: 15px 0; }
@@ -580,7 +585,7 @@ $courses = [
         /* Responsivo */
         @media (max-width: 992px) {
             .about-content { grid-template-columns: 1fr; text-align: center; gap: 30px; }
-            .profile-img { min-height: 250px; }
+            .profile-img { max-width: 300px; margin: 0 auto; }
             h1 { font-size: 2.5rem; }
             h2 { font-size: 2rem; }
             section { padding: 60px 0; }
@@ -658,18 +663,7 @@ $courses = [
         <h2>Sobre Mim</h2>
         <div class="about-content">
             <div class="profile-img">
-                <div class="profile-content">
-                    <i class="fas fa-user-graduate"></i>
-                    <h3>Natanael Lucas</h3>
-                    <p>18 anos | Desenvolvedor em Formação</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Belo Horizonte, MG</p>
-                    <div class="tech-stack">
-                        <span><i class="fab fa-js"></i> JavaScript</span>
-                        <span><i class="fab fa-php"></i> PHP</span>
-                        <span><i class="fas fa-database"></i> MySQL</span>
-                        <span><i class="fab fa-python"></i> Python</span>
-                    </div>
-                </div>
+                <img src="myfoto.jpeg" alt="Natanael Lucas">
             </div>
             <div class="about-text">
                 <h3>Olá, eu sou o Natanael!</h3>
@@ -788,7 +782,7 @@ $courses = [
             <?php foreach ($projects as $project): ?>
             <div class="project-card">
                 <div class="project-img">
-                    <i class="fas <?php echo $project['icon']; ?>"></i>
+                    <img src="<?php echo $project['image']; ?>" alt="<?php echo $project['title']; ?>">
                 </div>
                 <div class="project-body">
                     <h3><?php echo $project['title']; ?></h3>
